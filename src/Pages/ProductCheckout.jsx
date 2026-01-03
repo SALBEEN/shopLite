@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { use, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import "./checkout.css";
+import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 export default function ProductCheckout() {
   // guard if AppContext or product isn't ready yet
   const context = useContext(AppContext) || {};
@@ -76,6 +78,27 @@ export default function ProductCheckout() {
     contact: "",
     payment: "",
   });
+
+  const [isConfirm, setIsConfirm] = useState(false);
+  // const [isBlur, setIsBlur] = useState(false);
+
+  function handleConfirmButton() {
+    if (formData.contact == "" && formData.address == "") {
+      alert("Please fill out the form there");
+    } else {
+      // setIsConfirm(!isConfirm);
+      // setIsBlur(!isBlur);
+      if (formData.payment == "") {
+        alert("fill the payment mode");
+      } else {
+        setIsConfirm(!isConfirm);
+      }
+    }
+  }
+
+  function handleFinalConfirmation() {
+    toast.success("Order placed successfully!");
+  }
 
   return (
     // main container
@@ -218,7 +241,67 @@ export default function ProductCheckout() {
         >
           Reset
         </button>
-        <button className="Confirm-checkout">Confirm</button>
+        <button className="Confirm-checkout" onClick={handleConfirmButton}>
+          Confirm
+        </button>
+        {isConfirm && (
+          <>
+            <div className="final-confirmation-detail">
+              <div className="final-delivery-contact">
+                <label htmlFor="" id="final-delivery-contact-heading">
+                  Customer Contact
+                </label>
+                <span id="final-delivery-contact-value">
+                  {formData.contact}
+                </span>
+              </div>
+              <div className="final-delivery-location">
+                <label htmlFor="" id="final-delivery-location-heading">
+                  Delivery Address
+                </label>
+                <span id="final-delivery-location-value">
+                  {formData.address}
+                </span>
+              </div>
+              <div className="unit-price">
+                <div className="final-unit">
+                  <label htmlFor="" id="final-unit-heading">
+                    Quantity
+                  </label>
+                  <span id="final-unit-value">{currentQuantity}</span>
+                </div>
+                <div className="final-price">
+                  <label htmlFor="" id="final-price-heading">
+                    Total Price
+                  </label>
+                  <span id="final-price-amount">
+                    ${NetAmountAfterDiscount.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+              <div className="final-buttons">
+                <div className="final-cancel-button-container">
+                  <button
+                    className="final-cancel-button-container"
+                    onClick={() => setIsConfirm(!isConfirm)}
+                  >
+                    Cancle
+                  </button>
+                </div>
+                <div className="final-confirm-button-container">
+                  <Link to="/product">
+                    <button
+                      id="final-confirm-button"
+                      onClick={handleFinalConfirmation}
+                    >
+                      Confirm
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

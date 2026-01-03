@@ -294,3 +294,166 @@ body {
     width: 100%;
   }
 }
+
+/* css for final confirmation pop container wih few details  */
+/* POPUP CARD */
+.final-confirmation-detail {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%) scale(0.97);
+
+  width: 92%;
+  max-width: 460px;
+  max-height: 420px;
+
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+
+  /* animation */
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+
+  pointer-events: none;
+}
+
+/* SHOW POPUP */
+.final-confirmation-detail {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* SECTION BLOCKS */
+.final-delivery-contact,
+.final-delivery-location,
+.unit-price {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+/* HEADINGS */
+#final-delivery-contact-heading,
+#final-delivery-location-heading,
+#final-unit-heading,
+#final-price-heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* VALUES */
+#final-delivery-contact-value,
+#final-delivery-location-value,
+#final-unit-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+}
+
+/* PRICE ROW */
+.unit-price {
+  display: flex;
+  gap: 12px;
+}
+
+.final-unit,
+.final-price {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 14px;
+  text-align: center;
+}
+
+#final-price-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f9d58;
+}
+
+/* BUTTONS */
+.final-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.final-buttons button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* CANCEL */
+.final-cancel-button-container button {
+  background: #ffe6e6;
+  color: #d93025;
+  padding: 10px;
+}
+
+.final-cancel-button-container button:hover {
+  background: #d93025;
+  color: #ffffff;
+}
+
+/* CONFIRM */
+#final-confirm-button {
+  background: #0f9d58;
+  color: #ffffff;
+  padding: 10px;
+  text-decoration: none;
+  text-decoration: none;
+}
+
+#final-confirm-button:hover {
+  background: #0c7c45;
+  transform: translateY(-1px);
+}
+
+/* -------- RESPONSIVE -------- */
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .final-confirmation-detail {
+    max-width: 94%;
+    max-height: 460px;
+    padding: 18px;
+  }
+
+  .unit-price {
+    flex-direction: column;
+  }
+}
+
+/* TABLET */
+@media (min-width: 481px) and (max-width: 900px) {
+  .final-confirmation-detail {
+    max-width: 420px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 901px) {
+  .final-confirmation-detail {
+    max-width: 460px;
+  }
+}

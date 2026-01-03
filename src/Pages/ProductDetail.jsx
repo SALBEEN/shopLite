@@ -2,10 +2,8 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import "./productDetail.css";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> da5208a (Updated Product checkout feature)
+import Card from "../Components/Card";
 
 export default function ProductDetail() {
   const { product, setCartItems, setCartCount, cartItems, cartCount } =
@@ -49,6 +47,7 @@ export default function ProductDetail() {
   const prevImage = () => {
     setCurrent((prev) => (prev === 0 ? allImage.length - 1 : prev - 1));
   };
+
   return (
     <div className="main">
       <div className="content">
@@ -82,16 +81,15 @@ export default function ProductDetail() {
             <span>Category</span>
             <p className="category">{productForDetail.category}</p>
           </div>
+
           <div className="buttons">
             <button onClick={addToCart}>Add to Cart</button>
-<<<<<<< HEAD
-            <button>Check Out</button>
-=======
+
             <Link to={`/product/${id}/checkout/`}>
               <button>Check Out</button>
             </Link>
->>>>>>> da5208a (Updated Product checkout feature)
           </div>
+          {/* <Card idForRouting={id} /> */}
         </div>
       </div>
     </div>

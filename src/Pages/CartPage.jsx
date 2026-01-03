@@ -7,6 +7,8 @@ export default function () {
   const { setCartCount, cartCount, setCartItems, cartItems } =
     useContext(AppContext);
 
+  const [isConfirm, setIsConfirm] = useState(false);
+
   return (
     <>
       <div className="CartItemContainer">
@@ -21,6 +23,8 @@ export default function () {
               productDiscountPercentage={item.discountPercentage}
               productStock={item.stock}
               productCategory={item.category}
+              itemId={item.id}
+              id={item.id}
               removeFromCart={() => {
                 const FakeCartItem = cartItems.filter((p) => p.id != item.id);
                 setCartItems(FakeCartItem);
