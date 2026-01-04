@@ -7,7 +7,6 @@ export default function () {
   const { setCartCount, cartCount, setCartItems, cartItems } =
     useContext(AppContext);
 
-  const [isConfirm, setIsConfirm] = useState(false);
 
   return (
     <>
